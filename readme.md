@@ -14,6 +14,7 @@
 
 ```
 engine, _ := orm.NewEngine("sqlite3", "orm.db")
+
 defer engine.Close()
 ```
 
