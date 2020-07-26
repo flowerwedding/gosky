@@ -4,7 +4,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"path"
 	"strings"
 )
 
@@ -39,6 +38,7 @@ type RouterGroup struct {//group 分组
     engine      *Engine       // all groups share a Engine instance
 }
 
+//出Default外的，是第二重要的函数，对Engine实例执行初始化并返回
 //创建一个新的路由，也就是给引擎里面的所有参数都初始化
 func New() *Engine {
 	//return &Engine{router: make(map[string]HandlerFunc)}//初始化一个新的map
@@ -46,6 +46,29 @@ func New() *Engine {
 	//return &Engine{router: newRouter()}
 
 	engine := &Engine{router: newRouter()}
+
+
+	/*engine := &Engine{
+	    RouterGroup : RouterGroup{//路由组
+	        Handlers : nil,
+	        basePath : "/",
+	        root : true,
+	    }
+	    FuncMap : template.FuncMap{},
+	    RedirectTailingSlash :true,//是否自动重定向
+	    RedirectFixedPath : false,//是否尝试修复当前请求路径
+	    HandleMethodNotAllowed : false,//判断当前路由是否允许调用其他方法
+	    ForwardedByClientIP : true,//如果开启，尽可能返回客户端真实IP
+	    AppEngine : defaultAppEngine,
+	    UseRawPath : false,////如果开启，使用url.RawPath获取请求参数，否正url.Path
+	    UnescapePathValues :true,//对路径值进行转义
+	    MaxMultipartMemory : defaultMultipartMemory,//控制最大的文件上传大小
+	    trees : make(methodTrees, 0 ,9),
+	    delims : render.Delims{Left: "{{",Right:"}}"},//HTML模板左右界定符
+	    secureJsonPrefix : "while(1);",
+	}*/
+
+	//所有路由规则都有他管，路由组和Engine实例形成一个关联的组件
 	engine.RouterGroup = &RouterGroup{engine: engine}
 	engine.groups = []*RouterGroup{engine.RouterGroup}
 	return engine
@@ -143,48 +166,11 @@ func (group *RouterGroup) Use(middlewares ...HandlerFunc) {//增加中间件的�
 	group.middlewares = append(group.middlewares, middlewares...)
 }
 
-//之前设计动态路由时，支持通配符 * 匹配多级子路径。
-//静态文件路径是相对路径。映射到真实文件后，将文件返回，静态服务器就实现了。
-//找到路径后，用 net/http 库返回。因此，需要将解析请求的地址，映射到服务器上文件的真实地址，交给http.FileServer处理。
-
-func (group *RouterGroup) createStaticHandler(relativePath string, fs http.FileSystem) HandlerFunc {
-	//path.Join(path1,path2,…)路径片段使用特定的分隔符'\'连接起来形成路径，并规范化生成的路径。若任意一个路径片段类型错误，会报错。
-	//path.resolve()把一个路径或路径片段的序列解析为一个绝对路径。
-	absolutePath := path.Join(group.prefix, relativePath)
-	//
-	fileServer := http.StripPrefix(absolutePath, http.FileServer(fs))
-	return func(c *Context) {
-		file := c.Param("filepath")
-		// Check if file exists and/or if we have permission to access it
-		if _, err := fs.Open(file); err != nil {
-			c.Status(http.StatusNotFound)
-			return
-		}
-
-		fileServer.ServeHTTP(c.Writer, c.Req)
-	}
-}
-
-// serve static files
-func (group *RouterGroup) Static(relativePath string, root string) {
-	handler := group.createStaticHandler(relativePath, http.Dir(root))
-	urlPattern := path.Join(relativePath, "/*filepath")
-	// Register GET handlers
-	group.GET(urlPattern, handler)
-}
-
-func (engine *Engine) SetFuncMap(funcMap template.FuncMap) {
-	engine.funcMap = funcMap
-}
-
-func (engine *Engine) LoadHTMLGlob(pattern string) {
-	engine.htmlTemplates = template.Must(template.New("").Funcs(engine.funcMap).ParseGlob(pattern))
-}
-
-
-// Default use Logger() & Recovery middlewares
+// 这个函数是重点，调用New()创建默认Engine实例，初始化阶段引入Logger()和Recovery()中间件
 func Default() *Engine {
 	engine := New()
+	//Logger()：输出请求日志，并标准化日志格式
+	//Recovery()：异常捕获，防止出现panic导致服务崩溃，同时也将异常日志的格式化输出
 	engine.Use(Logger(), Recovery())
 	return engine
 }

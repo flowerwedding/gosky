@@ -21,7 +21,17 @@
     <expand />
     <select />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
   <component name="GOROOT" path="D:\GO2" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
   <component name="ProjectId" id="1fAh29d0YuRua3XSgq391yucE6p" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,13 +39,112 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gin" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GoProjects\src\gosky" />
+      <recent name="D:\GoProjects\src\gosky\render" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestEngine_Migrate in gosky/orm">
+    <configuration name="TestEngine_Migrate in gosky/orm" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gosky" />
+      <working_directory value="$PROJECT_DIR$/orm" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="gosky/orm" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestEngine_Migrate$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestParsePattern in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gosky" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="gosky" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestParsePattern$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRouterGroup_Static in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gosky" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="gosky" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestRouterGroup_Static$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestEngine_Migrate in gosky/orm" />
+        <item itemvalue="Go Test.TestParsePattern in gosky" />
+        <item itemvalue="Go Test.TestRouterGroup_Static in gosky" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>https://goproxy.cn</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="313" y="123" key="#Go_Modules_(vgo)" timestamp="1595717388464">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="313" y="123" key="#Go_Modules_(vgo)/0.0.1440.920@0.0.1440.920" timestamp="1595717388464" />
+    <state x="438" y="112" key="#TestParsePattern_in_gosky" timestamp="1595728373734">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="438" y="112" key="#TestParsePattern_in_gosky/0.0.1440.920@0.0.1440.920" timestamp="1595728373734" />
+    <state x="501" y="219" key="FileChooserDialogImpl" timestamp="1595731718208">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="501" y="219" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1595731718208" />
+    <state width="1397" height="241" key="GridCell.Tab.0.bottom" timestamp="1595734067224">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="241" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1595734067224" />
+    <state width="1397" height="241" key="GridCell.Tab.0.center" timestamp="1595734067224">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="241" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1595734067224" />
+    <state width="1397" height="241" key="GridCell.Tab.0.left" timestamp="1595734067224">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="241" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1595734067224" />
+    <state width="1397" height="241" key="GridCell.Tab.0.right" timestamp="1595734067224">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="241" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1595734067224" />
+    <state x="277" y="40" key="SettingsEditor" timestamp="1595747253872">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="277" y="40" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1595747253872" />
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1595748790485">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920@0.0.1440.920" timestamp="1595748790485" />
   </component>
 </project>
