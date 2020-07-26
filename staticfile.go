@@ -54,4 +54,5 @@ func (engine *Engine) SetFuncMap(funcMap template.FuncMap) {//和engine关联
 
 func (engine *Engine) LoadHTMLGlob(pattern string) {//自定义模板渲染函数funcMap()
 	engine.htmlTemplates = template.Must(template.New("").Funcs(engine.funcMap).ParseGlob(pattern))//ParseGlob方法，批量解析名字为pattern的文件
+    //与HTML呈现器关联
 }

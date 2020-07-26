@@ -16,7 +16,7 @@ const (
 	LIMIT
 	WHERE
 	ORDERBY
-	UPDATE//Type类型的枚举值
+	UPDATE
 	DELETE
 	COUNT
 )
@@ -28,8 +28,8 @@ func (c *Clause) Set(name Type, vars ...interface{}) {
 		c.sqlVars = make(map[Type][]interface{})
 	}
 	sql, vars := generators[name](vars...)
-	c.sql[name] = sql//子句
-	c.sqlVars[name] = vars//参数值
+	c.sql[name] = sql
+	c.sqlVars[name] = vars
 }
 
 //根据传入的Type的顺序，构造出最终的SQL语句
@@ -42,5 +42,5 @@ func (c *Clause) Build(orders ...Type) (string, []interface{}) {
 			vars = append(vars, c.sqlVars[order]...)
 		}
 	}
-	return strings.Join(sqls, " "), vars//返回最终SQL语句和参数值数组
+	return strings.Join(sqls, " "), vars
 }

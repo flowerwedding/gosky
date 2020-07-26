@@ -154,6 +154,7 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	c := newContext(w, req)//放到Context里面
 	c.handlers = middlewares//新增，中间件
 	c.engine = engine//页面渲染
+
 	engine.router.handle(c)//原来
 }
 
