@@ -18,7 +18,7 @@ import "gosky"
 func main() {
     r := gosky.Default()
     r.GET("/ping", func(c *gosky.Context) {
-        c.JSON(200, gin.H{
+        c.JSON(200, gosky.H{
             "message": "pong",
         })
     })
