@@ -87,3 +87,19 @@ user := new(User)
 ```
 //reflect.New()创建对象的指针，reflect.Value.Elem() 来取得其实际的值、通过反射获取指针指向的元素类型
 ```
+
+```
+//将 s *Session 作为入参调用。每一个钩子的入参类型均是 *Session
+```
+
+```
+//使用 MethodByName 方法反射得到该对象的方法。
+//fm.Call()可调用fm对应的reflect.ValueOf(s.RefTable().Model)中s.RefTable().Model的函数或方法
+```
+
+```
+//新增字段：ALTER TABLE table_name ADD COLUMN col_name, col_type;
+//删除字段：CREATE TABLE new_table AS SELECT col1, col2, ... from old_table 从 old_table 中挑选需要保留的字段到 new_table 中
+//         DROP TABLE old_table 删除 old_table
+//         ALTER TABLE new_table RENAME TO old_table; 重命名 new_table 为 old_table
+```

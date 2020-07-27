@@ -45,14 +45,14 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -162,13 +162,13 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1397" height="460" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1595776979345" />
-    <state x="277" y="40" key="SettingsEditor" timestamp="1595747253872">
+    <state x="277" y="40" key="SettingsEditor" timestamp="1595809175466">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="277" y="40" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1595747253872" />
-    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1595748790485">
+    <state x="277" y="40" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1595809175466" />
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1595806450566">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920@0.0.1440.920" timestamp="1595748790485" />
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920@0.0.1440.920" timestamp="1595806450566" />
   </component>
 </project>

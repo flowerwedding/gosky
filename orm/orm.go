@@ -51,7 +51,7 @@ func (engine *Engine) NewSession() *session.Session {
 
 type TxFunc func(*session.Session) (interface{}, error)
 
-//函数作为函数参数，事务
+//事务封装
 func (engine *Engine) Transaction(f TxFunc) (result interface{}, err error) {
 	s := engine.NewSession()
 	if err := s.Begin(); err != nil {
@@ -60,11 +60,11 @@ func (engine *Engine) Transaction(f TxFunc) (result interface{}, err error) {
 	defer func() {
 		if p := recover(); p != nil {//异常处理
 			_ = s.Rollback()
-			panic(p) // re-throw panic after Rollback
+			panic(p)
 		} else if err != nil {
-			_ = s.Rollback() // err is non-nil; don't change it
+			_ = s.Rollback()
 		} else {
-			err = s.Commit() // err is nil; if Commit returns error update err
+			err = s.Commit()
 		}
 	}()
 

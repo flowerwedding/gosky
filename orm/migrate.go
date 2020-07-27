@@ -1,11 +1,5 @@
 package orm
-//结构体变更时，数据库表的字段自动迁移
-//仅支持字段新增和删除，不支持字段类型变更
 
-//新增字段：ALTER TABLE table_name ADD COLUMN col_name, col_type;
-//删除字段：CREATE TABLE new_table AS SELECT col1, col2, ... from old_table 从 old_table 中挑选需要保留的字段到 new_table 中
-//         DROP TABLE old_table 删除 old_table
-//         ALTER TABLE new_table RENAME TO old_table; 重命名 new_table 为 old_table
 import (
 	"fmt"
 	"gosky/orm/log"
@@ -13,6 +7,7 @@ import (
 	"strings"
 )
 
+//新表 - 旧表 = 新增字段，旧表 - 新表 = 删除字段
 func difference(a []string, b []string) (diff []string) {//找切片A和B共有的切片
 	mapB := make(map[string]bool)
 	for _, v := range b {
@@ -26,21 +21,21 @@ func difference(a []string, b []string) (diff []string) {//找切片A和B共有�
 	return
 }
 
-// Migrate table
 func (engine *Engine) Migrate(value interface{}) error {
-	_, err := engine.Transaction(func(s *session.Session) (result interface{}, err error) {//事务
-		if !s.Model(value).HasTable() {//表不存在
+	_, err := engine.Transaction(func(s *session.Session) (result interface{}, err error) {//开启事务
+		if !s.Model(value).HasTable() {//表不存在则返回
 			log.Infof("table %s doesn't exist", s.RefTable().Name)
 			return nil, s.CreateTable()
 		}
-		table := s.RefTable()
-		rows, _ := s.Raw(fmt.Sprintf("SELECT * FROM %s LIMIT 1", table.Name)).QueryRows()//多行查询
+
+		table := s.RefTable()//查询不同字段的第一行，赋名字给columns，并计算增加和删除的字段
+		rows, _ := s.Raw(fmt.Sprintf("SELECT * FROM %s LIMIT 1", table.Name)).QueryRows()
 		columns, _ := rows.Columns()
 		addCols := difference(table.FieldNames, columns)
 		delCols := difference(columns, table.FieldNames)
 		log.Infof("added cols %v, deleted cols %v", addCols, delCols)
 
-		for _, col := range addCols {
+		for _, col := range addCols {//使用 ALTER 语句新增字段
 			f := table.GetField(col)
 			sqlStr := fmt.Sprintf("ALTER TABLE %s ADD COLUMN %s %s;", table.Name, f.Name, f.Type)
 			if _, err = s.Raw(sqlStr).Exec(); err != nil {
@@ -48,7 +43,7 @@ func (engine *Engine) Migrate(value interface{}) error {
 			}
 		}
 
-		if len(delCols) == 0 {
+		if len(delCols) == 0 {//使用创建新表并重命名的方式删除字段
 			return
 		}
 		tmp := "tmp_" + table.Name

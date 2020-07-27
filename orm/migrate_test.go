@@ -16,7 +16,7 @@ func TestEngine_Migrate(t *testing.T) {
 
 	rows, _ := s.Raw("SELECT * FROM User").QueryRows()
 	columns, _ := rows.Columns()
-	if !reflect.DeepEqual(columns, []string{"Name", "Age"}) {
+	if !reflect.DeepEqual(columns, []string{"Name", "Age"}) {//判断x和y是否是深等价
 		t.Fatal("Failed to migrate table User, got columns", columns)
 	}
 }
