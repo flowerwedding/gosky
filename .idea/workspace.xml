@@ -15,6 +15,9 @@
     </option>
   </component>
   <component name="GOROOT" path="D:\GO2" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
   <component name="ProjectId" id="1fG0iZd3p6VlLdoSHd1z5rsKgrm" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,6 +33,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -37,9 +41,20 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Go Test.TestRouterGroup_Group in gosky">
+  <component name="RunManager" selected="Go Test.TestEmail in gosky">
+    <configuration name="TestEmail in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gosky" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="gosky" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestEmail$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestRecovery in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gosky" />
       <working_directory value="$PROJECT_DIR$" />
@@ -64,6 +79,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestEmail in gosky" />
         <item itemvalue="Go Test.TestRouterGroup_Group in gosky" />
         <item itemvalue="Go Test.TestRecovery in gosky" />
       </list>
@@ -73,28 +89,33 @@
     <option name="version" value="1" />
   </component>
   <component name="VgoProject">
-    <proxy>direct</proxy>
+    <integration-enabled>true</integration-enabled>
+    <proxy>https://gogroxy.cn</proxy>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1397" height="242" key="GridCell.Tab.0.bottom" timestamp="1595836248839">
+    <state x="501" y="219" key="FileChooserDialogImpl" timestamp="1595855504586">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1595836248839" />
-    <state width="1397" height="242" key="GridCell.Tab.0.center" timestamp="1595836248838">
+    <state x="501" y="219" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1595855504586" />
+    <state width="1397" height="242" key="GridCell.Tab.0.bottom" timestamp="1595861645347">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1595836248838" />
-    <state width="1397" height="242" key="GridCell.Tab.0.left" timestamp="1595836248838">
+    <state width="1397" height="242" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1595861645347" />
+    <state width="1397" height="242" key="GridCell.Tab.0.center" timestamp="1595861645346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1595836248838" />
-    <state width="1397" height="242" key="GridCell.Tab.0.right" timestamp="1595836248839">
+    <state width="1397" height="242" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1595861645346" />
+    <state width="1397" height="242" key="GridCell.Tab.0.left" timestamp="1595861645346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1595836248839" />
-    <state x="224" y="106" key="SettingsEditor" timestamp="1595832863355">
+    <state width="1397" height="242" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1595861645346" />
+    <state width="1397" height="242" key="GridCell.Tab.0.right" timestamp="1595861645346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="224" y="106" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1595832863355" />
+    <state width="1397" height="242" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1595861645346" />
+    <state x="224" y="106" key="SettingsEditor" timestamp="1595855393680">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="224" y="106" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1595855393680" />
   </component>
 </project>

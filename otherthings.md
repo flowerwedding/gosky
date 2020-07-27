@@ -148,3 +148,16 @@ if part[0] == '*' && len(part) > 1 {
 //使用ParseFiles创建模板可以一次指定多个文件加载多个模板进来，但Execute不知道是哪个
 //New还是ParseFiles创建模板都是可以使用ExecuteTemplate
 ```
+
+```
+//错误处理作为中间件
+//使用defer挂载上错误恢复的函数，在这个函数中调用recover()，捕获panic，并将堆栈信息打印在日志中，向用户返回Internal Server Errorfunc Recovery() HandlerFunc {}
+```
+
+```
+defer func() {
+//在return之后运行，先赋值后放入堆栈 defer func(参数){}   
+//panic 会中止当前执行的程序并退出   
+//panic 会导致程序被中止，但是在退出前，会执行完defer的内容，因此用defer func(){}，defer任务执行完后，panic再继续抛出   
+//recover()函数是go语言提供的，可以防止因为一个panic而导致整个程序终止，但是recover()函数只能在defer里面有用，然后程序会恢复正常
+```

@@ -107,7 +107,18 @@ c.Redirect(http.StatusMovedPermanently, "https://mail.qq.com")
 
 #### 设置并获取session
 
+```
+鸽
+```
+
 #### 错误处理
+
+支持邮件警报处理
+
+```
+//该函数可外部调用
+Email("2965502421@qq.com","gosky","hello flowerwedding")
+```
 
 ### model设计
 
