@@ -45,7 +45,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../what-unexpected-summer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,19 +60,8 @@
       <recent name="D:\GoProjects\src\gosky\render" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestSetLevel in gosky/orm/log">
-    <configuration name="TestEngine_Migrate in gosky/orm" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="gosky" />
-      <working_directory value="$PROJECT_DIR$/orm" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="gosky/orm" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestEngine_Migrate$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestParsePattern in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestRedirect_Render in gosky (1)">
+    <configuration name="TestContext_FormFile in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gosky" />
       <working_directory value="$PROJECT_DIR$" />
       <framework value="gotest" />
@@ -80,7 +69,29 @@
       <package value="gosky" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestParsePattern$" />
+      <pattern value="^TestContext_FormFile$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRecovery in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gosky" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="gosky" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestRecovery$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRedirect_Render in gosky (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gosky" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="gosky" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestRedirect_Render$" />
       <method v="2" />
     </configuration>
     <configuration name="TestRedirect_Render in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -92,17 +103,6 @@
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
       <pattern value="^TestRedirect_Render$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestRouterGroup_Static in gosky" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="gosky" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="gosky" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestRouterGroup_Static$" />
       <method v="2" />
     </configuration>
     <configuration name="TestSetLevel in gosky/orm/log" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -118,11 +118,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestRedirect_Render in gosky (1)" />
+        <item itemvalue="Go Test.TestRecovery in gosky" />
+        <item itemvalue="Go Test.TestContext_FormFile in gosky" />
         <item itemvalue="Go Test.TestSetLevel in gosky/orm/log" />
         <item itemvalue="Go Test.TestRedirect_Render in gosky" />
-        <item itemvalue="Go Test.TestEngine_Migrate in gosky/orm" />
-        <item itemvalue="Go Test.TestParsePattern in gosky" />
-        <item itemvalue="Go Test.TestRouterGroup_Static in gosky" />
       </list>
     </recent_temporary>
   </component>
@@ -142,26 +142,26 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="438" y="112" key="#TestParsePattern_in_gosky/0.0.1440.920@0.0.1440.920" timestamp="1595728373734" />
-    <state x="501" y="219" key="FileChooserDialogImpl" timestamp="1595761049577">
+    <state x="501" y="219" key="FileChooserDialogImpl" timestamp="1595815323985">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="501" y="219" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1595761049577" />
-    <state width="1397" height="460" key="GridCell.Tab.0.bottom" timestamp="1595776979345">
+    <state x="501" y="219" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1595815323985" />
+    <state width="630" height="460" key="GridCell.Tab.0.bottom" timestamp="1595820225473">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="460" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1595776979345" />
-    <state width="1397" height="460" key="GridCell.Tab.0.center" timestamp="1595776979345">
+    <state width="630" height="460" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1595820225473" />
+    <state width="630" height="460" key="GridCell.Tab.0.center" timestamp="1595820225473">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="460" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1595776979345" />
-    <state width="1397" height="460" key="GridCell.Tab.0.left" timestamp="1595776979345">
+    <state width="630" height="460" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1595820225473" />
+    <state width="630" height="460" key="GridCell.Tab.0.left" timestamp="1595820225472">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="460" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1595776979345" />
-    <state width="1397" height="460" key="GridCell.Tab.0.right" timestamp="1595776979345">
+    <state width="630" height="460" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1595820225472" />
+    <state width="630" height="460" key="GridCell.Tab.0.right" timestamp="1595820225473">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="460" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1595776979345" />
+    <state width="630" height="460" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1595820225473" />
     <state x="277" y="40" key="SettingsEditor" timestamp="1595809175466">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

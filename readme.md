@@ -8,6 +8,84 @@
 
 ### controller设计
 
+#### 快速入门
+
+```
+package main
+
+import "gosky"
+
+func main() {
+    r := gosky.Default()
+    r.GET("/ping", func(c *gosky.Context) {
+        c.JSON(200, gin.H{
+            "message": "pong",
+        })
+    })
+    r.Run() // listen and serve on 0.0.0.0:8080
+}
+```
+
+#### 使用GET,POST,DELETE
+
+```
+router.GET("/someGet", getting)
+
+router.POST("/somePost", posting)
+
+router.DELETE("/someDelete", deleting)
+```
+
+#### 获取路径中的参数
+
+```
+name := c.Param("name")
+```
+
+#### 获取GET参数
+
+```
+firstname := c.DefaultQuery("firstname", "Guest")
+ 
+lastname := c.Query("lastname")
+```
+
+#### 获取POST参数
+
+```
+message := c.PostForm("message")
+
+nick := c.DefaultPostForm("nick", "anonymous")
+```
+
+#### 上传文件
+
+```
+//单个文件
+file, _ := c.FormFile("file")
+
+//多个文件
+form, _ := c.MultipartForm()
+files := form.File["upload[]"]
+
+//上传到指定路径
+c.SaveUploadedFile(file, dst)
+```
+
+#### 路由分组
+
+#### 使用中间件
+
+#### 重定向
+
+```
+c.Redirect(http.StatusMovedPermanently, "https://mail.qq.com")
+```
+
+#### 设置并获取session
+
+#### 错误处理
+
 ### model设计
 
 #### 数据库连接

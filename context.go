@@ -4,35 +4,31 @@ import (
 	"net/http"
 )
 
-//构建JSON数据
-//key是string类型，value是任意类型，interface{}是一个空接口，所有类型都实现了这个接口，所有可以代表所有类型
 type H map[string]interface{}
 
-//目前只包含了http.ResponseWriter和http.Request,另外提供了对Method和Path这两个常用属性的直接访问
-//Context就像百宝箱，会包含很多东西，如动态路由的参数、中间件的信息等。它随着每个请求的出现而产生，请求的结束而销毁，和当前请求相关信息都在Context里面。
+const defaultMultipartMemory = 32 << 20 // 表单限制上传大小，默认 32 MB
+
 type Context struct {
-	// origin objects
 	Writer http.ResponseWriter
 	Req    *http.Request
-	// request info
+
 	Path   string
 	Method string
 
-	//提供对参数路由的访问，解析后的参数存到Params中，且通过c.Param("lang")的方法获取对应的值
-	Params map[string]string//新增
+	Params map[string]string//解析后的路由参数
 
-	// response info
 	StatusCode int//状态码
 
-	// middleware中间件
-	handlers []HandlerFunc
+	handlers []HandlerFunc//中间件
 	index    int
 
-	// engine pointer页面渲染
-	engine *Engine
+	engine *Engine//页面渲染
+
+	MaxMultipartMemory  int64//文件上传
+
+	Render Redirect//重定向
 }
 
-//初始化
 func newContext(w http.ResponseWriter, req *http.Request) *Context {
 	return &Context{
 		Writer: w,
@@ -40,42 +36,44 @@ func newContext(w http.ResponseWriter, req *http.Request) *Context {
 		Path:   req.URL.Path,
 		Method: req.Method,
 
-		index:  -1,//新增，中间件
+		index:  -1,//中间件
+		MaxMultipartMemory: defaultMultipartMemory,//文件上传
 	}
 }
 
-//提供了访问Query和PostForm参数的方法
-func (c *Context) PostForm(key string) string {
-	return c.Req.FormValue(key)
-}
-
+//获取GET参数
 func (c *Context) Query(key string) string {
-	return c.Req.URL.Query().Get(key)
+	value := c.Req.URL.Query().Get(key)
+	return value
 }
 
-//设置状态码
-func (c *Context) Status(code int) {
-	c.StatusCode = code
-	c.Writer.WriteHeader(code)
+func (c *Context) DefaultQuery(key string,defaultValue string) string {
+	if value := c.Req.URL.Query().Get(key); value != ""{
+		return value
+	}
+	return defaultValue
 }
 
-//发送一个原始的HTTP标头[Http Header]到客户端。
-//标头是服务器以HTTP协议传HTML资料到浏览器前所送出的字串，在标头与HTML文件之间需要一行分隔。在送回HTML资料前，需要传完所有的标头。
-func (c *Context) SetHeader(key string, value string) {
-	c.Writer.Header().Set(key, value)
+//获取POST参数
+func (c *Context) PostForm(key string) string {
+	value := c.Req.FormValue(key)
+	return value
 }
 
-func (c *Context) Fail(code int, err string) {
-	c.index = len(c.handlers)
-	c.JSON(code, H{"message": err})
+func (c *Context) DefaultPostForm(key string,defaultValue string) string {
+	if value := c.Req.FormValue(key); value != ""{
+		return value
+	}
+	return defaultValue
 }
 
-func (c *Context) Param(key string) string {//获取路由中对应的值，gin框架里面也本来就是这个作用
+//获取路由中对应的值
+func (c *Context) Param(key string) string {
 	value, _ := c.Params[key]
 	return value
 }
 
-func (c *Context) Next() {//新增，中间件
+func (c *Context) Next() {//中间件
 	c.index++
 	s := len(c.handlers)
 	for ; c.index < s; c.index++ {

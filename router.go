@@ -36,11 +36,6 @@ func parsePattern(pattern string) []string {//新增
 }
 
 func (r *router) addRoute(method string, pattern string, handler HandlerFunc) {//增加路由
-	//log.Printf("Route %4s - %s", method, pattern)//最开始对请求的参数、名字、实现功能增加到map中的处理
-
-	//key := method + "-" + pattern
-	//r.handlers[key] = handler
-
 	parts := parsePattern(pattern)
 
 	key := method + "-" + pattern//map 的 key 还是老的 key，roots里面的key是GET、POST方法，handler的key是完整的方法+名字
@@ -53,23 +48,13 @@ func (r *router) addRoute(method string, pattern string, handler HandlerFunc) {/
 }
 
 func (r *router) handle(c *Context) {
-/*	key := c.Method + "-" + c.Path//最开始的serviceHTTP
-	if handler, ok := r.handlers[key]; ok {
-		handler(c)
-	} else {
-		c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
-	}*/
-
-	n, params := r.getRoute(c.Method, c.Path)//找这个想要的路由是否存在
+    n, params := r.getRoute(c.Method, c.Path)//找这个想要的路由是否存在
 	if n != nil {
 		c.Params = params//如果存在，放到map里面
 		key := c.Method + "-" + n.pattern
-		//r.handlers[key](c)
 
 		c.handlers = append(c.handlers, r.handlers[key])
 	} else {
-		//c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
-
 		c.handlers = append(c.handlers, func(c *Context) {
 		    c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
 	    })
