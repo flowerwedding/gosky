@@ -74,7 +74,30 @@ c.SaveUploadedFile(file, dst)
 
 #### 路由分组
 
+```
+v1 := r.Group("/v1")
+{
+	v1.GET("/", func(c *Context) {
+		c.HTML(http.StatusOK, "b" ,"<h1>Hello world</h1>")
+	})
+
+	v1.GET("/hello", func(c *Context) {
+		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Query("name"), c.Path)
+	})
+}
+```
+
 #### 使用中间件
+
+```
+r.Use(gee.Logger())
+
+v2 := r.Group("/v2")
+v2.Use(onlyForV2()) // v2 group middleware
+{
+    ...
+}
+```
 
 #### 重定向
 
@@ -223,16 +246,22 @@ c.ProtoBuf(http.StatusOK, data)
 #### HTML渲染
 
 ```
-router.LoadHTMLGlob("templates/*")
+r.SetFuncMap(template.FuncMap{
+	"formatAsDate": formatAsDate,
+})
 
-c.HTML(http.StatusOK, "index.tmpl", gin.H{
-      "title": "Main website",
+r.LoadHTMLGlob("templates/*")
+
+r.GET("/", func(c *gosky.Context) {
+	c.HTML(http.StatusOK, "index.tmpl", gin.H{
+        "title": "Main website",
+    })
 })
 ```
 
 ## 参考文档
 
-Go 语言编程之旅
+ [Go 语言编程之旅](http://product.dangdang.com/28982027.html)
 
 [gin-gonic/gin](https://github.com/gin-gonic/gin)
 

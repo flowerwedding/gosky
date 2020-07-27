@@ -47,7 +47,7 @@ func New() *Engine {
 func (group *RouterGroup) Group(prefix string) *RouterGroup {
 	engine := group.engine
 	newGroup := &RouterGroup{
-		prefix: group.prefix + prefix,
+		prefix: group.prefix + prefix,//核心
 		parent: group,
 		engine: engine,
 	}
@@ -57,7 +57,7 @@ func (group *RouterGroup) Group(prefix string) *RouterGroup {
 
 //添加路由
 func (group *RouterGroup) addRoute(method string, comp string, handler HandlerFunc) {
-	pattern := group.prefix + comp
+	pattern := group.prefix + comp//核心
 	log.Printf("Route %4s - %s", method, pattern)
 
 	group.engine.router.addRoute(method, pattern, handler)
@@ -81,8 +81,7 @@ func (engine *Engine) Run(addr string) (err error) {
 	return http.ListenAndServe(addr, engine)
 }
 
-//新增中间件
-//普通路由头数量为3，因为初始化时加了两个中间件
+//将中间件应用到某个Group
 func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
 	group.middlewares = append(group.middlewares, middlewares...)
 }
@@ -91,7 +90,7 @@ func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	var middlewares []HandlerFunc
 	for _, group := range engine.groups {
-		if strings.HasPrefix(req.URL.Path, group.prefix) {
+		if strings.HasPrefix(req.URL.Path, group.prefix) {//通过前缀判断属于哪个Group，拥有哪些中间件
 			middlewares = append(middlewares, group.middlewares...)
 		}
 	}

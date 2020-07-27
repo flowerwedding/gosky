@@ -35,8 +35,8 @@ func newContext(w http.ResponseWriter, req *http.Request) *Context {
 		Req:    req,
 		Path:   req.URL.Path,
 		Method: req.Method,
-
-		index:  -1,//中间件
+		//记录当前执行到第几个中间件，在中间件中调用Next方法，控制权就交给下个中间件，直到最后一个中间件，再从后往前，调用每个中间件在Next方法后定义的部分
+		index:  -1,
 		MaxMultipartMemory: defaultMultipartMemory,//文件上传
 	}
 }
@@ -73,6 +73,7 @@ func (c *Context) Param(key string) string {
 	return value
 }
 
+//s，也就是长度比中间件的总数大 1，因为有Handler在
 func (c *Context) Next() {//中间件
 	c.index++
 	s := len(c.handlers)
